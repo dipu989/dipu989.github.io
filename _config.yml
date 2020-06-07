@@ -34,7 +34,7 @@ show_aboutme_card: true
 # about_me_title: The will be displayed as the title in the About Me section
 about_me_title: About Me
 # about_me_description: This will be displayed under the title.
-about_me_description:
+about_me_description: I am Shantnu Kumar, a final year undergraduate from the Institute of Engineering and Management, Kolkata. Currently, I am focussed on Android Development and like to dig into Open Source Projects, check my profile <a href="https://sourcerer.io/dipu989" target="_blank">here</a>. I try hard not to break the production code. My technical interest lies in the field of Operating Systems. Linux and Music aficionado!
 
 # SKILLS SECTION
 # show_skills_card:
@@ -69,7 +69,7 @@ projects_title: Projects
 # show_os_projects:
 # > setting this to true, will display your public projects on github
 # > setting this to false, will omit your public projects on github
-show_os_projects: true
+show_os_projects: false
 # os_projects_title: The will be displayed as the title of your open source projects
 os_projects_title: Contribution to Open Source Projects
 
@@ -81,7 +81,7 @@ show_contact_card: true
 # contact_title: The will be displayed as the title in the Contact section
 contact_title: Get In Touch
 # contact_description: This will be displayed under the title.
-contact_description: .
+contact_description: Having a great idea or want to discuss something, let's get in touch.
 
 # GITHUB-METADATA
 # Set this to your forked repository
@@ -91,7 +91,7 @@ projects:
   # sortby:
   # > set this to pushed, if you want to sort your github repositories by time.
   # > set this to stars, if you want to sort your github repositories by stars.
-  sort_by: pushed
+  sort_by: stars
   exclude:
     # archived:
     # > setting this to true, will exclude archived repositories

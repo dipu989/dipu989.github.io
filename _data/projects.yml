@@ -13,17 +13,24 @@
 #     - tag: AngularJS
 #     - tag: Node
 
-- name: Tech Feeds
-  descr: "This App will show top tech news in user's feed using HackerNews API. "
-  demo: https://example.com/
-  tags:
-    - tag: Android
-    - tag: Java
-    - tag: Hacker News API
+ - name: Tech Feeds
+   descr: "This App will show top tech news in user's feed using HackerNews API. "
+   Demo: https://github.com/dipu989/Tech-Feeds
+   tags:
+     - tag: Android
+     - tag: Java
+     - tag: Hacker News API
 
-- name: Social Stars
-  descr: "Django Powered web site, focussed on Space related discussions."
-  demo: https://example.com/
-  tags:
-    - tag: Python
-    - tag: Django
+ - name: Social Stars
+   descr: "Django Powered web site, focussed on Space related discussions."
+   Demo: https://github.com/dipu989/SocialStars
+   tags:
+     - tag: Python
+     - tag: Django
+
+ - name: Weather Application
+   descr: "An application which informs about current location's name, temprature, windspeed, wind-direction and humidity. "
+   Demo: https://github.com/dipu989/Weather-Application
+   tags:
+     - tag: Web
+     - tag: API
