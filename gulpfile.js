@@ -122,10 +122,6 @@ function watchStyles() {
   gulp.watch([ '_sass/*.scss' ], styles);
 }
 
-function watch() {
-  gulp.parallel(watchData, watchMarkup, watchScripts, watchStyles);
-}
-
 var compile = gulp.parallel(styles, stylesVendors, scripts, scriptsVendors);
 var serve = gulp.series(compile, jekyll, browserSyncServe);
 var watch = gulp.parallel(watchData, watchMarkup, watchScripts, watchStyles);
