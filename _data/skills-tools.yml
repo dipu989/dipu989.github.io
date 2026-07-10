@@ -6,19 +6,19 @@
 #   weight: 5
 
 - name: Git
-  weight: 5
+  weight: 3
 
 - name: PostgreSQL
-  weight: 4
+  weight: 3
 
 - name: Kubernetes
-  weight: 4
+  weight: 3
 
 - name: Docker
-  weight: 4
+  weight: 3
 
 - name: Fastlane
-  weight: 4
+  weight: 3
 
 - name: Kafka
   weight: 3
@@ -30,4 +30,4 @@
   weight: 3
 
 - name: MongoDB
-  weight: 2
+  weight: 3

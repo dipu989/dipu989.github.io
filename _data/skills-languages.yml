@@ -6,10 +6,10 @@
 #   weight: 5
 
 - name: Go
-  weight: 5
+  weight: 3
 
 - name: Swift
-  weight: 4
+  weight: 3
 
 - name: Kotlin
   weight: 3
@@ -18,7 +18,7 @@
   weight: 3
 
 - name: Python
-  weight: 2
+  weight: 3
 
 - name: SQL
   weight: 3
