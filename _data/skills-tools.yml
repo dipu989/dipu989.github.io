@@ -6,16 +6,28 @@
 #   weight: 5
 
 - name: Git
-  weight: 5
-
-- name: Bash
   weight: 3
 
-- name: Travis CI
-  weight: 1
-
-- name: Android Studio
+- name: PostgreSQL
   weight: 3
 
-- name: Postman
-  weight: 4
+- name: Kubernetes
+  weight: 3
+
+- name: Docker
+  weight: 3
+
+- name: Fastlane
+  weight: 3
+
+- name: Kafka
+  weight: 3
+
+- name: ArgoCD
+  weight: 3
+
+- name: Buildkite
+  weight: 3
+
+- name: MongoDB
+  weight: 3

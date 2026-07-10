@@ -5,5 +5,8 @@
 # - name: Framework
 #   weight: 5
 
-- name: Django
-  weight: 1
+- name: SwiftUI
+  weight: 3
+
+- name: GORM
+  weight: 3
