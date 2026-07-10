@@ -5,23 +5,20 @@
 # - name: Language
 #   weight: 5
 
-- name: C++
+- name: Go
   weight: 5
 
-- name: Java
+- name: Swift
   weight: 4
-
-- name: C
-  weight: 2
-
-- name: HTML5
-  weight: 4
-
-- name: Java
-  weight: 1
 
 - name: Kotlin
-  weight: 1
+  weight: 3
+
+- name: Java
+  weight: 3
+
+- name: Python
+  weight: 2
 
 - name: SQL
-  weight: 2
+  weight: 3

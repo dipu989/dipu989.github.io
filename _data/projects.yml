@@ -13,24 +13,26 @@
 #     - tag: AngularJS
 #     - tag: Node
 
- - name: Tech Feeds
-   descr: "This App will show top tech news in user's feed using HackerNews API. "
-   Demo: https://github.com/dipu989/Tech-Feeds
-   tags:
-     - tag: Android
-     - tag: Java
-     - tag: Hacker News API
+- name: Atmos
+  descr: "Personal environmental telemetry and carbon intelligence backend — tracks activity, computes CO2 emissions, and dedupes GPS/receipt data through an event-driven architecture."
+  demo: https://github.com/dipu989/atmos-core
+  tags:
+    - tag: Go
+    - tag: Fiber
+    - tag: PostgreSQL
+    - tag: GORM
 
- - name: Social Stars
-   descr: "Django Powered web site, focussed on Space related discussions."
-   Demo: https://github.com/dipu989/SocialStars
-   tags:
-     - tag: Python
-     - tag: Django
+- name: Tech Feeds
+  descr: "This App will show top tech news in user's feed using HackerNews API."
+  demo: https://github.com/dipu989/Tech-Feeds
+  tags:
+    - tag: Android
+    - tag: Java
+    - tag: Hacker News API
 
- - name: Weather Application
-   descr: "An application which informs about current location's name, temprature, windspeed, wind-direction and humidity. "
-   Demo: https://github.com/dipu989/Weather-Application
-   tags:
-     - tag: Web
-     - tag: API
+- name: Weather Application
+  descr: "An application which informs about current location's name, temperature, windspeed, wind-direction and humidity."
+  demo: https://github.com/dipu989/Weather-Application
+  tags:
+    - tag: Web
+    - tag: API

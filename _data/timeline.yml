@@ -17,29 +17,52 @@
 #     - tag: Rails
 #   timeline-side: right
 
-- title: Google Code In
-  title-url: https://codein.withgoogle.com/archive/
-  date: Dec 2019 - Feb 2020
-  subtitle: Mentor at FOSSASIA
+- title: JumpCloud
+  title-url: https://jumpcloud.com/
+  date: Feb 2025 - Present
+  subtitle: Senior Software Engineer — Apple MDM Team. Migrated Volume Purchase Program APIs to 2.0, built DDM-based OS update management, and lead migration of profile-based workflows to DDM.
   tags:
-    - tag: Web
-    - tag: Bash
-    - tag: Android
+    - tag: Golang
+    - tag: Apple MDM
+    - tag: DDM
   timeline-side: right
 
-- title: Codeheat
-  title-url: https://codeheat.org/
-  date: Sep 2019 - Feb 2020
-  subtitle: Finalist Winner at Codeheat
+- title: Esper
+  title-url: https://esper.io/
+  date: Aug 2021 - Feb 2025
+  subtitle: Senior Software Engineer — built Esper's iOS MDM solution from the ground up, designed device onboarding microservices in Golang, and led development of the Esper iOS app in SwiftUI.
   tags:
-    - tag: Android App Development
+    - tag: Golang
+    - tag: SwiftUI
+    - tag: Kafka
+    - tag: PostgreSQL
+    - tag: Kubernetes
+  timeline-side: left
+
+- title: Infosys
+  title-url: https://www.infosys.com/
+  date: Nov 2020 - Jul 2021
+  subtitle: System Engineer Trainee — Foundation Program training in Java, DBMS, and Linux systems.
+  tags:
+    - tag: Java
+    - tag: DBMS
+    - tag: Linux
   timeline-side: right
+
+- title: FOSSASIA
+  title-url: https://fossasia.org/
+  date: Sep 2019 - Mar 2020
+  subtitle: Open Source Contributor — Google Code-In mentor guiding pre-university students, and contributor to the NeuroLab Android app.
+  tags:
+    - tag: Android
+    - tag: Open Source
+  timeline-side: left
 
 - title: IEM, Kolkata
-  title-url: https://example.com/
-  date: Aug 2016 - Present
-  subtitle: B.Tech Information Technology
-  timeline-side: left
+  title-url: https://iem.edu.in/
+  date: Aug 2016 - May 2020
+  subtitle: B.Tech Information Technology (8.46 CGPA)
+  timeline-side: right
 
 - title: Tata DAV Public School
   title-url: https://example.com/
