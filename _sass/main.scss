@@ -373,8 +373,11 @@ a {
   justify-content: center;
 
   div {
+    overflow: hidden;
     padding: 0.2rem;
-    transition: opacity 0.5s;
+    transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out,
+      width 0.3s ease-in-out, margin 0.3s ease-in-out,
+      padding 0.3s ease-in-out;
   }
 
   div[skill-type="language"] {
@@ -565,6 +568,14 @@ a {
 
 .project-desc {
   line-height: 1rem;
+}
+
+.link-wrapper {
+  margin-top: 0.5rem;
+
+  .highlight-link {
+    margin-right: 1rem;
+  }
 }
 
 .project-stars-forks {
