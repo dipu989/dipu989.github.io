@@ -1,12 +1,14 @@
 # > name: Name of your project
 # > descr: Description of your project
-# > demo: Link to your project
+# > links: List of labeled links for your project (usually GitHub repos)
 # > tags: List of technologies you used in your projects
 #
 # Example of a project
 # - name: project X
 #   descr: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam"
-#   demo: https://example.com/
+#   links:
+#     - label: Link
+#       url: https://example.com/
 #   tags:
 #     - tag: MongoDB
 #     - tag: Express
@@ -14,8 +16,14 @@
 #     - tag: Node
 
 - name: Atmos
-  descr: "Personal environmental telemetry and carbon intelligence backend — tracks activity, computes CO2 emissions, and dedupes GPS/receipt data through an event-driven architecture."
-  demo: https://github.com/dipu989/atmos-core
+  descr: "Personal environmental telemetry and carbon intelligence ecosystem — tracks activity, computes CO2 emissions, and dedupes GPS/receipt data through an event-driven architecture, across a backend, web app, and mobile app."
+  links:
+    - label: Core
+      url: https://github.com/dipu989/atmos-core
+    - label: Web
+      url: https://github.com/dipu989/atmos-web
+    - label: Mobile
+      url: https://github.com/dipu989/atmos-mobile
   tags:
     - tag: Go
     - tag: Fiber
@@ -24,7 +32,9 @@
 
 - name: Tech Feeds
   descr: "This App will show top tech news in user's feed using HackerNews API."
-  demo: https://github.com/dipu989/Tech-Feeds
+  links:
+    - label: Link
+      url: https://github.com/dipu989/Tech-Feeds
   tags:
     - tag: Android
     - tag: Java
@@ -32,7 +42,9 @@
 
 - name: Weather Application
   descr: "An application which informs about current location's name, temperature, windspeed, wind-direction and humidity."
-  demo: https://github.com/dipu989/Weather-Application
+  links:
+    - label: Link
+      url: https://github.com/dipu989/Weather-Application
   tags:
     - tag: Web
     - tag: API
