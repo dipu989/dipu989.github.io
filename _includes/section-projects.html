@@ -1,11 +1,7 @@
-<p class="mono-label">Field Entries</p>
 <h2>{{ site.projects_title }}</h2>
 <div class="entries">
-  {% assign entry_num = 0 %}
   {% for project in site.data.projects %}
-    {% assign entry_num = entry_num | plus: 1 %}
     <div class="entry">
-      <span class="entry-num">Entry No. {{ entry_num | prepend: '00' | slice: -2, 2 }}</span>
       <h3>{{ project.name }}</h3>
       <p>{{ project.descr }}</p>
       {% if project.links %}
