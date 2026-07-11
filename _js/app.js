@@ -1,123 +1,83 @@
-setTimeout(function() {
-  fadeOutPreloader(document.getElementById('preloader'), 69);
-}, 1500);
+document.addEventListener('DOMContentLoaded', function () {
+  var preloader = document.getElementById('preloader');
+  if (preloader) {
+    setTimeout(function () {
+      preloader.style.opacity = '0';
+      setTimeout(function () {
+        preloader.remove();
+      }, 400);
+    }, 300);
+  }
 
-$(document).ready(function() {
-  $(window).on('beforeunload', function() {
-    window.scrollTo(0, 0);
-  });
+  drawContour();
 
-  /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
-  particlesJS.load('landing', 'assets/particles.json', function() {});
-
-  // Typing Text
-  var element = document.getElementById('txt-rotate');
-  var toRotate = element.getAttribute('data-rotate');
-  var period = element.getAttribute('data-period');
-  setTimeout(function() {
-    new TxtRotate(element, JSON.parse(toRotate), period);
-  }, 1500);
-
-  // INJECT CSS
-  var css = document.createElement('style');
-  css.type = 'text/css';
-  css.innerHTML = '#txt-rotate > .wrap { border-right: 0.08em solid #666 }';
-  document.body.appendChild(css);
-
-  // Initialize AOS
-  AOS.init({
-    disable: 'mobile',
-    offset: 150,
-    duration: 800,
-    easing: 'ease-out-cubic',
-    delay: 50,
-    once: true
-  });
-
-  randomizeOrder();
+  if (window.AOS) {
+    AOS.init({
+      disable: 'mobile',
+      offset: 150,
+      duration: 800,
+      easing: 'ease-out-cubic',
+      delay: 50,
+      once: true
+    });
+  }
 });
 
-/* FUNCTIONS */
-/* Preloader */
+/* Contour-line hero background, drawn from the page's current --accent token */
 
-function fadeOutPreloader(element, duration) {
-  opacity = 1;
+function drawContour() {
+  var canvas = document.getElementById('contour');
+  if (!canvas) return;
+  var parent = canvas.parentElement;
+  var rect = parent.getBoundingClientRect();
+  var dpr = window.devicePixelRatio || 1;
 
-  interval = setInterval(function() {
-    if (opacity <= 0) {
-      element.style.zIndex = 0;
-      element.style.opacity = 0;
-      element.style.filter = 'alpha(opacity = 0)';
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
 
-      // Allow horizontal scroll
-      document.documentElement.style.overflowY = 'auto';
+  var ctx = canvas.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, rect.width, rect.height);
 
-      // Remove preloader div
-      document.getElementById('preloader').remove();
+  var accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#3f6a4f';
+  ctx.strokeStyle = hexToRgba(accent, 0.35);
+  ctx.lineWidth = 1;
 
-      clearInterval(interval);
-    } else {
-      opacity -= 0.1;
-      element.style.opacity = opacity;
-      element.style.filter = 'alpha(opacity = ' + opacity * 100 + ')';
+  var w = rect.width;
+  var h = rect.height;
+  var lines = 9;
+
+  for (var i = 0; i < lines; i++) {
+    var baseY = (h / (lines + 1)) * (i + 1);
+    ctx.beginPath();
+    for (var x = 0; x <= w; x += 6) {
+      var y = baseY
+        + Math.sin(x * 0.006 + i * 0.9) * (h * 0.05)
+        + Math.sin(x * 0.017 + i * 1.7) * (h * 0.025);
+      if (x === 0) {
+        ctx.moveTo(x, y);
+      } else {
+        ctx.lineTo(x, y);
+      }
     }
-  }, duration);
+    ctx.stroke();
+  }
 }
 
-/* Typing Text */
+function hexToRgba(hex, alpha) {
+  hex = hex.replace('#', '');
+  var r = parseInt(hex.substring(0, 2), 16);
+  var g = parseInt(hex.substring(2, 4), 16);
+  var b = parseInt(hex.substring(4, 6), 16);
+  return 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
+}
 
-var TxtRotate = function(el, toRotate, period) {
-  this.toRotate = toRotate;
-  this.el = el;
-  this.loopNum = 0;
-  this.period = parseInt(period, 10) || 2000;
-  this.txt = '';
-  this.tick();
-  this.isDeleting = false;
-};
+var contourResizeTimer;
+window.addEventListener('resize', function () {
+  clearTimeout(contourResizeTimer);
+  contourResizeTimer = setTimeout(drawContour, 200);
+});
 
-TxtRotate.prototype.tick = function() {
-  var i = this.loopNum % this.toRotate.length;
-  var fullTxt = this.toRotate[i];
-
-  if (this.isDeleting) {
-    this.txt = fullTxt.substring(0, this.txt.length - 1);
-  } else {
-    this.txt = fullTxt.substring(0, this.txt.length + 1);
-  }
-  this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
-
-  var that = this;
-  var delta = 200 - Math.random() * 100;
-
-  if (this.isDeleting) {
-    delta /= 5;
-  }
-
-  if (!this.isDeleting && this.txt === fullTxt) {
-    delta = this.period;
-    this.isDeleting = true;
-  } else if (this.isDeleting && this.txt === '') {
-    this.isDeleting = false;
-    this.loopNum++;
-    delta = 500;
-  }
-
-  setTimeout(function() {
-    that.tick();
-  }, delta);
-};
-
-/* Word Cloud */
-
-function randomizeOrder() {
-  var parent = document.getElementById('skills');
-  var divs = parent.getElementsByTagName('div');
-  var frag = document.createDocumentFragment();
-
-  // Randomize order of skills
-  while (divs.length) {
-    frag.appendChild(divs[Math.floor(Math.random() * divs.length)]);
-  }
-  parent.appendChild(frag);
+if (window.matchMedia) {
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', drawContour);
 }

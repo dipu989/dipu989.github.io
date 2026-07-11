@@ -1,2 +1,4 @@
-<h1 class="title">{{site.about_me_title}}</h1>
-<p class="description" data-aos="fade-up">{{site.about_me_description}}</p>
+<p class="mono-label">About</p>
+<h2>{{ site.about_me_title }}</h2>
+{% assign desc = site.about_me_description %}
+<p class="lede" style="margin-top: 1rem;"><span class="drop">{{ desc | slice: 0, 1 }}</span>{{ desc | slice: 1, 9999 }}</p>
