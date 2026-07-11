@@ -90,12 +90,12 @@ $font-mono: "JetBrains Mono", ui-monospace, monospace;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #161c17;
-  --surface: #1b221c;
-  --ink: #e8ece2;
-  --muted: #98a390;
-  --line: #303930;
-  --accent: #6bab7e;
+  --bg: #202320;
+  --surface: #262924;
+  --ink: #e7e9e2;
+  --muted: #9ea89a;
+  --line: #383c34;
+  --accent: #7fae8c;
   color-scheme: dark;
 }
 :root[data-theme="light"] {
