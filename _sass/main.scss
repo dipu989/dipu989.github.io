@@ -80,22 +80,22 @@ $font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #202320;
-    --surface: #262924;
-    --ink: #e7e9e2;
-    --muted: #9ea89a;
-    --line: #383c34;
-    --accent: #7fae8c;
+    --bg: #16211a;
+    --surface: #1c2820;
+    --ink: #eef1ea;
+    --muted: #9db3a0;
+    --line: #2e3d33;
+    --accent: #6fcf97;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #202320;
-  --surface: #262924;
-  --ink: #e7e9e2;
-  --muted: #9ea89a;
-  --line: #383c34;
-  --accent: #7fae8c;
+  --bg: #16211a;
+  --surface: #1c2820;
+  --ink: #eef1ea;
+  --muted: #9db3a0;
+  --line: #2e3d33;
+  --accent: #6fcf97;
   color-scheme: dark;
 }
 :root[data-theme="light"] {
