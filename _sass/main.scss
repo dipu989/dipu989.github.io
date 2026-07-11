@@ -80,12 +80,12 @@ $font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #161c17;
-    --surface: #1b221c;
-    --ink: #e8ece2;
-    --muted: #98a390;
-    --line: #303930;
-    --accent: #6bab7e;
+    --bg: #202320;
+    --surface: #262924;
+    --ink: #e7e9e2;
+    --muted: #9ea89a;
+    --line: #383c34;
+    --accent: #7fae8c;
     color-scheme: dark;
   }
 }
@@ -355,16 +355,10 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   flex-direction: column;
   gap: 2rem;
 }
-.entry .entry-num {
-  font-family: $font-mono;
-  font-size: 0.72rem;
-  color: var(--accent);
-}
 .entry h3 {
   font-family: $font-display;
   font-weight: 500;
   font-size: 1.3rem;
-  margin-top: 0.2rem;
 }
 .entry p {
   color: var(--muted);
