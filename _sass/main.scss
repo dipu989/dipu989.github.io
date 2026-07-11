@@ -1,909 +1,440 @@
-/* Imports */
+/* ============================================================
+   Fonts — self-hosted, Newsreader / Work Sans / JetBrains Mono
+============================================================ */
 
-@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap");
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/newsreader-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Newsreader";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/newsreader-400-italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/assets/fonts/newsreader-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/assets/fonts/newsreader-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/work-sans-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/assets/fonts/work-sans-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/jetbrains-mono-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/assets/fonts/jetbrains-mono-500.woff2") format("woff2");
+}
 
-/* Variables */
+/* ============================================================
+   Tokens
+============================================================ */
 
-$small-screen: 48em !default;
-$medium-screen: 62em !default;
-$large-screen: 75em !default;
-$font-family: "Raleway", sans-serif;
-$font-family-numbers: "Josefin Sans", sans-serif;
-$font-size-base: 1rem !default;
-$font-size-h1: 2rem !default;
-$font-weight-strong: 600;
-$text-color: #263041 !default;
-$bg-color: #eef1f6;
-$card-bg-color: linear-gradient(145deg, #ffffff 0%, #e4e9f2 100%);
-$primary-color: #0d9488;
-$shadow-light: rgba(255, 255, 255, 0.8);
-$shadow-dark: rgba(163, 177, 198, 0.5);
+$small-screen: 40em !default;
+$medium-screen: 60em !default;
+$font-display: "Newsreader", serif;
+$font-body: "Work Sans", -apple-system, sans-serif;
+$font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-/* General */
+:root {
+  --bg: #eef0ea;
+  --surface: #f7f8f3;
+  --ink: #1f2a22;
+  --muted: #5c6b5e;
+  --line: #d3d9cb;
+  --accent: #3f6a4f;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161c17;
+    --surface: #1b221c;
+    --ink: #e8ece2;
+    --muted: #98a390;
+    --line: #303930;
+    --accent: #6bab7e;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161c17;
+  --surface: #1b221c;
+  --ink: #e8ece2;
+  --muted: #98a390;
+  --line: #303930;
+  --accent: #6bab7e;
+  color-scheme: dark;
+}
+:root[data-theme="light"] {
+  --bg: #eef0ea;
+  --surface: #f7f8f3;
+  --ink: #1f2a22;
+  --muted: #5c6b5e;
+  --line: #d3d9cb;
+  --accent: #3f6a4f;
+  color-scheme: light;
+}
+
+/* ============================================================
+   Reset & base
+============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+img, svg { display: block; max-width: 100%; }
+ul { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3, p { margin: 0; }
 
 html {
-  background: $bg-color;
-  color: $text-color;
-  font-family: $font-family;
-  font-size: $font-size-base;
-  font-weight: normal;
-  height: 100%;
-  overflow: hidden;
-}
-
-body {
-  height: 100%;
-}
-
-/* Typography */
-
-h1 {
-  font-size: $font-size-h1;
-  font-weight: $font-weight-strong;
-  line-height: 2rem;
-}
-
-p {
-  word-spacing: 0.1rem;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: $font-body;
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
-  color: $primary-color;
+  color: var(--ink);
   text-decoration: none;
-
-  &:hover {
-    color: $text-color;
-  }
+  border-bottom: 1px solid var(--line);
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
+a:hover, a:focus-visible {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-.highlight-title {
-  color: $primary-color;
+.mono-label {
+  font-family: $font-mono;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  color: var(--muted);
 }
 
 .highlight-link {
-  box-shadow: inset 0 -0.125rem 0 $primary-color;
-  box-sizing: border-box;
-  color: $primary-color;
-  display: inline-block;
-  padding: 0.125rem 0.125rem;
-  transition: all 0.2s ease-in-out;
-
-  &:hover {
-    box-shadow: inset 0 -2rem 0 0 $primary-color;
-    color: $text-color;
-  }
+  font-family: $font-mono;
+  font-size: 0.85rem;
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
-/* Layout */
-
-.layout {
-  margin: 0.5rem;
-  max-width: $large-screen;
-  padding: 0.5rem 0.5rem;
-}
-
-.layout .card {
-  background: $card-bg-color;
-  border-radius: 2rem;
-  margin: 3rem 0;
-  padding: 1rem 2rem;
-}
-
-.layout .card .title {
-  text-align: center;
-  position: relative;
-}
-
-.layout .card .subtitle {
-  text-align: center;
-}
-
-.layout .card .description {
-  text-align: justify;
-}
-
-.neumorphism-button {
-  background: linear-gradient(145deg, #f5f8fb 0%, #e2e8f0 100%);
-  box-shadow: -4px -4px 8px $shadow-light, 4px 4px 8px $shadow-dark;
-}
-
-@mixin neumorphism-button-pressed {
-  background: linear-gradient(150deg, #e2e8f0 0%, #f5f8fb 100%);
-  box-shadow: inset 3px 3px 6px $shadow-dark,
-    inset -3px -3px 6px $shadow-light;
-}
-
-.neumorphism-card {
-  box-shadow: inset 2px 2px 5px $shadow-dark, inset -2px -2px 5px $shadow-light;
-}
-
-.neumorphism-card-big {
-  box-shadow: 6px 6px 12px $shadow-dark, -6px -6px 12px $shadow-light;
-}
-
-/* Preloader */
+/* ============================================================
+   Preloader
+============================================================ */
 
 #preloader {
   align-items: center;
-  background: $bg-color;
+  background: var(--bg);
   display: flex;
   height: 100%;
   justify-content: center;
   left: 0;
-  margin: 0.5rem;
-  padding: 0.5rem;
-  position: absolute;
-  right: 0;
+  position: fixed;
+  inset: 0;
   z-index: 999;
+  transition: opacity 0.4s ease;
 
-  .load {
-    height: 6rem;
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 6rem;
-  }
-
-  .load hr {
-    animation: spin 2s ease infinite;
-    border: 0;
-    height: 40%;
-    margin: 0;
-    position: absolute;
-    width: 40%;
-  }
-
-  .load :first-child {
-    animation-delay: -1.5s;
-    background: $text-color;
-  }
-
-  .load :nth-child(2) {
-    animation-delay: -1s;
-    background: $primary-color;
-  }
-
-  .load :nth-child(3) {
-    animation-delay: -0.5s;
-    background: $text-color;
-  }
-
-  .load :last-child {
-    background: $primary-color;
-  }
-
-  @keyframes spin {
-    0%,
-    100% {
-      transform: translate(0);
-    }
-    25% {
-      transform: translate(160%);
-    }
-    50% {
-      transform: translate(160%, 160%);
-    }
-    75% {
-      transform: translate(0, 160%);
-    }
+  .mark {
+    font-family: $font-display;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--accent);
   }
 }
 
-/* Footer */
+/* ============================================================
+   Layout shell
+============================================================ */
 
-.footer {
-  background: $bg-color;
-  color: $text-color;
-  margin: 0.5rem;
-  padding: 1rem;
-  text-align: center;
+.layout {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
-.footer a {
-  color: $primary-color;
+.section {
+  padding: 3rem 0;
+  border-top: 1px solid var(--line);
+}
+.section:first-child { border-top: none; }
 
-  &:hover,
-  &:focus {
-    background: $bg-color;
-    color: $text-color;
-  }
+.section h2 {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: 1.55rem;
+  margin-top: 0.4rem;
+  letter-spacing: -0.01em;
 }
 
-/* Landing Page */
+/* ============================================================
+   Hero / Masthead
+============================================================ */
 
-#landing {
-  background: $bg-color;
-  color: $text-color;
-  display: flex;
-  height: 100%;
-  margin: 0.5rem;
-  padding: 0.5rem;
-  text-align: center;
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 1.5rem 3rem;
 }
-
-.landing-title {
-  left: 0;
-  margin: 0.5rem;
-  padding: 0.5rem;
+.hero canvas {
   position: absolute;
-  right: 0;
-  top: 40%;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
 }
-
-.landing-icons {
+.hero-inner {
+  position: relative;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+.hero h1 {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: clamp(2.2rem, 7vw, 3.2rem);
+  line-height: 1.05;
+  margin-top: 0.6rem;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.hero .tagline {
+  font-family: $font-display;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin-top: 0.5rem;
+}
+.hero .contact-row {
+  margin-top: 1.5rem;
   display: flex;
-  justify-content: center;
-
-  .social-link {
-    color: $text-color;
-    position: relative;
-    height: 3rem;
-    line-height: 3rem;
-    margin: 0.25rem;
-    width: 3rem;
-
-    .circle {
-      animation: outWaveOut 1s cubic-bezier(0.42, 0, 0.58, 1) forwards;
-      fill: none;
-      stroke-dasharray: 40;
-      transition: all 0.2s ease-in-out;
-    }
-
-    .social {
-      font-size: 1.5rem;
-      position: absolute;
-      top: 0px;
-      transition: all 0.5s ease-in-out;
-      width: 100%;
-    }
-
-    .social-svg {
-      fill: $text-color;
-    }
-
-    .label {
-      display: none;
-    }
-
-    &:hover {
-      cursor: pointer;
-
-      .circle {
-        animation: outWaveIn 1s cubic-bezier(0.42, 0, 0.58, 1) forwards,
-          colorBlackIcon 1s linear forwards;
-        fill: $text-color;
-        fill-opacity: 1;
-      }
-
-      .social-svg {
-        fill: #fff;
-      }
-
-      .label {
-        display: unset !important;
-        position: relative;
-        top: -2rem;
-      }
-    }
-  }
-
-  .email:hover {
-    .circle {
-      animation: outWaveIn 1s cubic-bezier(0.42, 0, 0.58, 1) forwards,
-        colorEmail 1s linear forwards;
-    }
-    .social-svg {
-      fill: #d44638;
-    }
-  }
-
-  .linkedin:hover {
-    .circle {
-      animation: outWaveIn 1s cubic-bezier(0.42, 0, 0.58, 1) forwards,
-        colorLinkedin 1s linear forwards;
-    }
-    .social-svg {
-      fill: #007bb6;
-    }
-  }
-
-  .twitter:hover {
-    .circle {
-      animation: outWaveIn 1s cubic-bezier(0.42, 0, 0.58, 1) forwards,
-        colorTwitter 1s linear forwards;
-    }
-    .social-svg {
-      fill: #1da1f2;
-    }
-  }
-
-  @keyframes outWaveIn {
-    to {
-      stroke-dasharray: 510;
-      stroke-width: 0.5rem;
-    }
-  }
-
-  @keyframes outWaveOut {
-    from {
-      stroke: $text-color;
-      stroke-dasharray: 510;
-      stroke-width: 0.5rem;
-    }
-    to {
-      stroke: $text-color;
-      stroke-dasharray: 83;
-      stroke-width: 0.5rem;
-    }
-  }
-
-  @keyframes colorBlackIcon {
-    to {
-      stroke: #000;
-    }
-  }
-
-  @keyframes colorEmail {
-    to {
-      stroke: #b23121;
-    }
-  }
-
-  @keyframes colorLinkedin {
-    to {
-      stroke: #007bb6;
-    }
-  }
-
-  @keyframes colorTwitter {
-    to {
-      stroke: #1da1f2;
-    }
-  }
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+.hero .contact-row a {
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  color: var(--ink);
 }
 
-/* Skills Section */
+/* ============================================================
+   About / Lede
+============================================================ */
 
-#skills {
-  align-items: center;
+.lede {
+  font-family: $font-display;
+  font-size: 1.25rem;
+  line-height: 1.55;
+}
+.lede .drop {
+  float: left;
+  font-size: 3.2rem;
+  line-height: 0.8;
+  padding: 0.1rem 0.4rem 0 0;
+  font-weight: 500;
+  color: var(--accent);
+}
+.lede a { font-size: inherit; }
+
+/* ============================================================
+   Skills — Instruments
+============================================================ */
+
+.instruments {
+  margin-top: 1.25rem;
+  font-size: 1.05rem;
+  line-height: 2.2;
+}
+.instruments span {
+  font-family: $font-mono;
+  font-size: 0.82rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  margin: 0 0.3rem 0.3rem 0;
+  display: inline-block;
+  color: var(--ink);
+}
+
+/* ============================================================
+   Timeline — Log
+============================================================ */
+
+.log-strip {
+  margin-top: 1.5rem;
+}
+.log-entry {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 1.25rem;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--line);
+}
+.log-entry:first-child { border-top: none; }
+.log-entry .when {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: var(--muted);
+  padding-top: 0.2rem;
+  white-space: nowrap;
+}
+.log-entry .who {
+  font-family: $font-display;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+.log-entry .who a { font-size: inherit; border-color: transparent; }
+.log-entry .who a:hover { border-color: var(--accent); }
+.log-entry .what {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin-top: 0.3rem;
+  line-height: 1.55;
+}
+.log-entry .tags {
+  margin-top: 0.55rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-
-  div {
-    overflow: hidden;
-    padding: 0.2rem;
-    transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out,
-      width 0.3s ease-in-out, margin 0.3s ease-in-out,
-      padding 0.3s ease-in-out;
-  }
-
-  div[skill-type="language"] {
-    color: #0f766e;
-  }
-
-  div[skill-type="framework"] {
-    color: #4f46e5;
-  }
-
-  div[skill-type="tool"] {
-    color: #475569;
-  }
-
-  div[skill-weight="1"] {
-    font-size: 0.75rem;
-    line-height: 0.25rem;
-  }
-
-  div[skill-weight="2"] {
-    font-size: 1.25rem;
-    line-height: 0.75rem;
-  }
-
-  div[skill-weight="3"] {
-    font-size: 1.75rem;
-    line-height: 1.25rem;
-  }
-
-  div[skill-weight="4"] {
-    font-size: 2.25rem;
-    line-height: 1.75rem;
-  }
-
-  div[skill-weight="5"] {
-    font-size: 2.75rem;
-    line-height: 2.25rem;
-  }
-
-  input[type="radio"] {
-    display: none;
-  }
-
-  .filter-button {
-    display: none;
-  }
+  gap: 0.4rem;
+}
+.log-entry .tags span {
+  font-family: $font-mono;
+  font-size: 0.68rem;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
 }
 
-/* Timeline Section */
-
-.timeline-wrapper {
-  .timeline {
-    list-style-type: none;
-    padding: 0;
-    position: relative;
-  }
-
-  .timeline:before {
-    background: linear-gradient(
-      to bottom,
-      #f3f3f3 0%,
-      #d5d5d5 8%,
-      #d5d5d5 92%,
-      #f3f3f3 100%
-    );
-    content: " ";
-    height: 100%;
-    left: 50%;
-    margin-left: -0.0675rem;
-    position: absolute;
-    width: 0.125rem;
-    z-index: -1;
-  }
-
-  .timeline li {
-    padding: 1rem 0;
-  }
-
-  .hexagon {
-    background: $primary-color;
-    height: 0.5rem;
-    left: 0;
-    margin-left: auto;
-    margin-right: auto;
-    position: absolute;
-    right: 0;
-    top: -0.8rem;
-    width: 1rem;
-  }
-
-  .hexagon:before,
-  .hexagon:after {
-    border-left: 2rem solid transparent;
-    border-right: 2rem solid transparent;
-    border-left-width: 0.5rem;
-    border-right-width: 0.5rem;
-    content: "";
-    left: 0;
-    position: absolute;
-  }
-
-  .hexagon:before {
-    border-bottom: 0.25rem solid $primary-color;
-    top: -0.25rem;
-  }
-
-  .hexagon:after {
-    border-top: 0.25rem solid $primary-color;
-    bottom: -0.25rem;
-  }
-
-  .flag-wrapper {
-    position: relative;
-    text-align: center;
-  }
-
-  .flag {
-    background: $bg-color;
-    border-radius: 0.5rem;
-    font-weight: $font-weight-strong;
-    padding: 0.25rem 0.5rem;
-
-    span {
-      position: relative;
-      transition: 0.4s;
-    }
-
-    span:after {
-      content: "\226B";
-      color: $primary-color;
-      position: absolute;
-      opacity: 0;
-      right: -1rem;
-      transition: 0.4s;
-    }
-
-    &:hover span {
-      letter-spacing: 0.05rem;
-      padding-right: 1rem;
-    }
-
-    &:hover span:after {
-      opacity: 1;
-      right: 0;
-    }
-  }
-
-  .time-wrapper {
-    color: $text-color;
-    display: block;
-    line-height: 0.5rem;
-    margin-top: 0.3rem;
-  }
-
-  .time {
-    background: $bg-color;
-    border-radius: 0.5rem;
-    display: inline-block;
-    padding: .6rem;
-  }
-
-  .desc {
-    background: $bg-color;
-    border-radius: 1rem;
-    margin: 1em 0 0 0;
-    padding: 0.75em;
-    text-align: center;
-  }
+@media (max-width: $small-screen) {
+  .log-entry { grid-template-columns: 1fr; gap: 0.3rem; }
 }
 
-/* Projects Card */
+/* ============================================================
+   Projects — Field Entries
+============================================================ */
 
-.project {
-  border-radius: 1rem;
-  margin: 1rem 0;
-  padding: 0.5rem 1rem;
-}
-
-.project .name-link-wrapper {
+.entries {
+  margin-top: 1.5rem;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 2rem;
 }
-
-.project .name-link-wrapper .links {
-  font-size: 1.5rem;
-  margin: 1rem 0.5rem;
+.entry .entry-num {
+  font-family: $font-mono;
+  font-size: 0.72rem;
+  color: var(--accent);
 }
-
-.project-desc {
-  line-height: 1rem;
+.entry h3 {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: 1.3rem;
+  margin-top: 0.2rem;
 }
-
-.link-wrapper {
-  margin-top: 0.5rem;
-
-  .highlight-link {
-    margin-right: 1rem;
-  }
+.entry p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-top: 0.35rem;
+  max-width: 34rem;
 }
-
-.project-stars-forks {
-  fill: $text-color;
-  font-family: $font-family-numbers;
-}
-
-.tag-wrapper {
-  margin: 1rem 0 0 0;
-}
-
-.tag {
-  border-radius: 0.5rem;
-  display: inline-block;
-  margin-bottom: 0.25rem;
-  padding: 0.5rem;
-}
-
-/* Contact Card */
-
-.contact-icons {
+.entry .links {
+  margin-top: 0.6rem;
   display: flex;
-  justify-content: center;
-
-  .social-link {
-    position: relative;
-    height: 3rem;
-    line-height: 3rem;
-    margin: 0.25rem;
-    text-align: center;
-    width: 3rem;
-
-    .social {
-      font-size: 1.5rem;
-    }
-
-    .social-svg {
-      fill: $primary-color;
-    }
-
-    &:hover {
-      cursor: pointer;
-      animation: jump 1s infinite alternate;
-
-      .social-svg {
-        fill: $text-color;
-      }
-    }
-  }
-
-  .black:hover {
-    .social-svg {
-      fill: #000;
-    }
-  }
-
-  .linkedin:hover {
-    .social-svg {
-      fill: #007bb6;
-    }
-  }
-
-  .twitter:hover {
-    .social-svg {
-      fill: #1da1f2;
-    }
-  }
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.entry .links a {
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
-/* Media Queries */
+/* ============================================================
+   Contact (closing)
+============================================================ */
 
-@media only screen and (min-width: $small-screen) {
-  .layout {
-    margin: 0.5rem auto;
-    padding: 2rem 2rem;
-  }
-
-  .layout .card .subtitle {
-    font-size: 1.25rem;
-  }
-
-  .layout .card .description {
-    font-size: 1.25rem;
-  }
-
-  .landing-title h1 {
-    font-size: 3rem;
-  }
-
-  .landing-icons .social-link {
-    width: 4rem;
-    height: 4rem;
-    line-height: 4rem;
-
-    .social {
-      font-size: 2rem;
-    }
-  }
-
-  #skills {
-    div[skill-weight="1"] {
-      font-size: 1rem;
-      line-height: 0rem;
-    }
-
-    div[skill-weight="2"] {
-      font-size: 2rem;
-      line-height: 1rem;
-    }
-
-    div[skill-weight="3"] {
-      font-size: 3rem;
-      line-height: 2rem;
-    }
-
-    div[skill-weight="4"] {
-      font-size: 4rem;
-      line-height: 3rem;
-    }
-
-    div[skill-weight="5"] {
-      font-size: 5rem;
-      line-height: 4rem;
-    }
-
-    .filter-button {
-      border-radius: 0.5rem;
-      cursor: pointer;
-      display: unset;
-      margin: 0 0.5rem 1rem;
-      padding: 0.5rem 0.25rem;
-      text-align: center;
-      width: 21%;
-
-      &:hover {
-        letter-spacing: 0.25rem;
-      }
-    }
-
-    @mixin filter-out {
-      height: 0;
-      margin: 0;
-      opacity: 0;
-      padding: 0;
-      width: 0;
-    }
-
-    input[type="radio"]:checked + .filter-button {
-      color: $primary-color;
-      font-weight: $font-weight-strong;
-      @include neumorphism-button-pressed();
-    }
-
-    input[id="language"]:checked ~ div[skill-type="framework"],
-    input[id="language"]:checked ~ div[skill-type="tool"] {
-      @include filter-out;
-    }
-
-    input[id="framework"]:checked ~ div[skill-type="language"],
-    input[id="framework"]:checked ~ div[skill-type="tool"] {
-      @include filter-out;
-    }
-
-    input[id="tool"]:checked ~ div[skill-type="language"],
-    input[id="tool"]:checked ~ div[skill-type="framework"] {
-      @include filter-out;
-    }
-  }
-
-  .timeline-wrapper {
-    .timeline {
-      margin: 0 auto;
-      width: 39.25rem;
-    }
-
-    .timeline li:after {
-      clear: both;
-      content: "";
-      display: block;
-    }
-
-    .direction-l {
-      float: left;
-      text-align: right;
-      width: 18.5rem;
-
-      .hexagon {
-        left: auto;
-        right: -1.6rem;
-        top: 0.4rem;
-      }
-
-      .flag-wrapper {
-        display: inline-block;
-        text-align: right;
-      }
-
-      .time-wrapper {
-        float: left;
-        margin-top: -0.1rem;
-      }
-
-      .desc {
-        text-align: right;
-      }
-    }
-
-    .direction-r {
-      float: right;
-      text-align: left;
-      width: 18.5rem;
-
-      .hexagon {
-        left: -1.6rem;
-        right: auto;
-        top: 0.4rem;
-      }
-
-      .flag-wrapper {
-        display: inline-block;
-        text-align: left;
-      }
-
-      .time-wrapper {
-        float: right;
-        margin-top: -0.1rem;
-      }
-
-      .desc {
-        text-align: left;
-      }
-    }
-  }
-
-  .projects-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    > * {
-      width: 44%;
-    }
-  }
-
-  .contact-icons .social-link {
-    width: 4rem;
-    height: 4rem;
-    line-height: 4rem;
-
-    .social {
-      font-size: 2rem;
-    }
-  }
+.lede-line {
+  font-family: $font-display;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  max-width: 34rem;
+}
+.contact-links {
+  margin-top: 1.25rem;
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+.contact-links a {
+  font-family: $font-mono;
+  font-size: 0.85rem;
+  color: var(--ink);
 }
 
-@media only screen and (min-width: $medium-screen) {
-  .layout {
-    padding: 3rem 3rem;
-  }
+/* ============================================================
+   Footer
+============================================================ */
 
-  .layout .card {
-    padding: 1rem 3rem;
-  }
+.footer {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+.footer a { color: var(--muted); font-size: inherit; }
+.footer a:hover { color: var(--accent); }
 
-  #skills .filter-button {
-    width: 21.5%;
-  }
+/* ============================================================
+   Responsive
+============================================================ */
 
-  .timeline-wrapper {
-    .timeline {
-      width: 49rem;
-    }
-
-    .direction-l {
-      width: 23.35rem;
-    }
-
-    .direction-r {
-      width: 23.35rem;
-    }
-  }
-
-  .projects-wrapper {
-    > * {
-      width: 45%;
-    }
-  }
+@media (min-width: $small-screen) {
+  .hero { padding: 6rem 1.5rem 4rem; }
+  .section { padding: 4rem 0; }
 }
 
-@media only screen and (min-width: $large-screen) {
-  .layout {
-    padding: 5rem 5rem;
-  }
-
-  #skills .filter-button {
-    width: 22%;
-  }
-
-  .timeline-wrapper {
-    .timeline {
-      width: 58rem;
-    }
-
-    .direction-l {
-      width: 27.9rem;
-    }
-
-    .direction-r {
-      width: 27.9rem;
-    }
-  }
-
-  .projects-wrapper {
-    > * {
-      width: 46%;
-    }
-  }
+@media (min-width: $medium-screen) {
+  .layout, .hero-inner, .footer { max-width: 44rem; }
 }
 
-/* Reusable Animations */
-
-@keyframes jump {
-  0% {
-    bottom: 0;
-  }
-  50% {
-    bottom: 0.5rem;
-  }
-  100% {
-    bottom: 0;
-  }
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
