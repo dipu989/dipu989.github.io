@@ -30,6 +30,16 @@
     - tag: PostgreSQL
     - tag: GORM
 
+- name: Tick It
+  descr: "A To-Do Android app built with Kotlin and MVVM — add and prioritize tasks, mark them complete, search, and sort by name or date created."
+  links:
+    - label: Link
+      url: https://github.com/dipu989/Tick-It
+  tags:
+    - tag: Kotlin
+    - tag: Android
+    - tag: MVVM
+
 - name: Tech Feeds
   descr: "This App will show top tech news in user's feed using HackerNews API."
   links:
@@ -39,12 +49,3 @@
     - tag: Android
     - tag: Java
     - tag: Hacker News API
-
-- name: Weather Application
-  descr: "An application which informs about current location's name, temperature, windspeed, wind-direction and humidity."
-  links:
-    - label: Link
-      url: https://github.com/dipu989/Weather-Application
-  tags:
-    - tag: Web
-    - tag: API
