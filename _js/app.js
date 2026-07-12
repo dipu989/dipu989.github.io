@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   drawContour();
+  initThemeToggle();
 
   if (window.AOS) {
     AOS.init({
@@ -22,6 +23,40 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+
+/* Theme toggle — persists an explicit override in localStorage, falls
+   back to the OS preference (prefers-color-scheme) when unset */
+
+function currentTheme() {
+  var explicit = document.documentElement.getAttribute('data-theme');
+  if (explicit === 'dark' || explicit === 'light') return explicit;
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+function initThemeToggle() {
+  var toggle = document.getElementById('theme-toggle');
+  if (!toggle) return;
+
+  renderThemeToggle();
+
+  toggle.addEventListener('click', function () {
+    var next = currentTheme() === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try {
+      localStorage.setItem('theme', next);
+    } catch (e) {}
+    renderThemeToggle();
+    drawContour();
+  });
+}
+
+function renderThemeToggle() {
+  var toggle = document.getElementById('theme-toggle');
+  if (!toggle) return;
+  var theme = currentTheme();
+  toggle.textContent = theme === 'dark' ? 'Light' : 'Dark';
+  toggle.setAttribute('aria-label', 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' theme');
+}
 
 /* Contour-line hero background, drawn from the page's current --accent token */
 
@@ -79,5 +114,8 @@ window.addEventListener('resize', function () {
 });
 
 if (window.matchMedia) {
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', drawContour);
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
+    drawContour();
+    renderThemeToggle();
+  });
 }
