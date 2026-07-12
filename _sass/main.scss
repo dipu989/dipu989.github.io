@@ -426,20 +426,6 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 }
 
 /* ============================================================
-   Footer
-============================================================ */
-
-.footer {
-  max-width: 40rem;
-  margin: 0 auto;
-  padding: 2rem 1.5rem 4rem;
-  color: var(--muted);
-  font-size: 0.82rem;
-}
-.footer a { color: var(--muted); font-size: inherit; }
-.footer a:hover { color: var(--accent); }
-
-/* ============================================================
    Responsive
 ============================================================ */
 
@@ -449,7 +435,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 }
 
 @media (min-width: $medium-screen) {
-  .layout, .hero-inner, .footer { max-width: 44rem; }
+  .layout, .hero-inner { max-width: 44rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
