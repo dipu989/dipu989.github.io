@@ -5,6 +5,16 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        if (stored === 'dark' || stored === 'light') {
+          document.documentElement.setAttribute('data-theme', stored);
+        }
+      } catch (e) {}
+    })();
+  </script>
 
   <title>{{ site.title }}</title>
   <meta name="description" content="{{ site.description }}">
@@ -22,6 +32,7 @@
 </head>
 
 <body>
+  <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme"></button>
   <div id="preloader"><span class="mark">Shantnu Kumar</span></div>
   {% include landing-page.html %}
   <div class="layout">
