@@ -34,7 +34,7 @@ show_aboutme_card: true
 # about_me_title: The will be displayed as the title in the About Me section
 about_me_title: About Me
 # about_me_description: This will be displayed under the title.
-about_me_description: I am Shantnu Kumar, a Software Engineer specializing in MDM (Mobile Device Management), backend microservices, and DevOps. I've spent most of my career building device management systems for Android and iOS — first at <a href="https://esper.io" target="_blank">Esper</a> and now at <a href="https://jumpcloud.com" target="_blank">JumpCloud</a> — designing the backend services and native apps behind them. Earlier on, I contributed to <a href="https://fossasia.org" target="_blank">FOSSASIA</a> through Codeheat and mentored students during Google Code-In. I try hard not to break production code. Linux and Music aficionado!
+about_me_description: I am Shantnu Kumar, a Software Engineer specializing in MDM (Mobile Device Management), backend microservices, and DevOps. I've spent most of my career building device management systems for Android and iOS — first at <a href="https://esper.io" target="_blank">Esper</a> and now at <a href="https://jumpcloud.com" target="_blank">JumpCloud</a> — designing the backend services and native apps behind them. Earlier on, I contributed to <a href="https://fossasia.org" target="_blank">FOSSASIA</a> through Codeheat and mentored students during Google Code-In. I try hard not to break production code, and lately I've been going deeper on distributed systems, Kubernetes, and cloud-native architecture — with a growing interest in agentic AI.
 
 # SKILLS SECTION
 # show_skills_card:
